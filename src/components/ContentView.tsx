@@ -17,7 +17,6 @@ export default function ContentView({ contentData }: Props) {
     const handleCategoryClick = (idx: number) => {
         setActiveCategory(idx);
     };
-    console.log(activeCategoryTitle);
 
     const getSlug = (idx: number) => {
         const content = activeCategoryContent[idx];
