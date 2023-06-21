@@ -3,20 +3,20 @@
 import { PortableText } from "@portabletext/react";
 import Button from "@/components/Button";
 import NotFound from "@/components/NotFound";
-import { getExperience } from "@sanity/sanity-utils";
+import { getProject } from "@sanity/sanity-utils";
 import ArrowBackOutline from "@public/svg/arrow-back-outline.svg";
 import ExternalLinkOutline from "@public/svg/external-link-outline.svg";
 import { PortableTextComponents } from "@/components/PortableTextComponents";
 
 type Props = {
     params: {
-        experience: string;
+        project: string;
     };
 };
 
-export default async function ExperiencePage({ params }: Props) {
-    const slug = params.experience;
-    const content = await getExperience(slug);
+export default async function ProjectPage({ params }: Props) {
+    const slug = params.project;
+    const content = await getProject(slug);
 
     if (!content) {
         return <NotFound />;

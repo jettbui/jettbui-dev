@@ -71,7 +71,14 @@ export async function getExperience(slug: string): Promise<Experience> {
         "thumbnail": thumbnail.asset->url,
         description,
         content,
-        links
+        links,
+        content[]{
+            ...,
+            _type == "image" => {
+                ...,
+                asset->
+            }
+        }
     }`;
 
     return client.fetch(query, { slug });
@@ -115,7 +122,14 @@ export async function getProject(slug: string): Promise<Project> {
         "thumbnail": thumbnail.asset->url,
         description,
         content,
-        links
+        links,
+        content[]{
+            ...,
+            _type == "image" => {
+                ...,
+                asset->
+            }
+        }
     }`;
 
     return client.fetch(query, { slug });

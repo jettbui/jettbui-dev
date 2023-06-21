@@ -1,23 +1,34 @@
 import React from "react";
+import Link from "next/link";
 
 type Props = {
     children: React.ReactNode;
+    href?: string;
+    target?: string;
     noBackground?: boolean;
-    onClick?: () => void;
 };
 
-export default function Button({ children, onClick, noBackground }: Props) {
-    const background = noBackground ? "" : "hover:bg-buttonPrimaryBgHover";
+export default function Button({
+    children,
+    href,
+    target,
+    noBackground,
+}: Props) {
+    const background = noBackground
+        ? ""
+        : "px-3 py-2 hover:bg-buttonPrimaryBgHover";
 
     return (
-        <button
-            className={`px-3 py-2 text-xs lg:text-sm xl:text-md 
+        <Link
+            className={` text-xs lg:text-sm xl:text-md 
             rounded-md transition-colors font-semibold
             text-buttonPrimary hover:text-buttonPrimaryHover
+            hover:cursor-pointer
             ${background}`}
-            onClick={onClick}
+            href={href ?? "#"}
+            target={target}
         >
             {children}
-        </button>
+        </Link>
     );
 }

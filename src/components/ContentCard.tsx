@@ -9,19 +9,12 @@ import { Project } from "@typesDir/Project";
 
 type Props = {
     content: Experience | Project;
-    onClick?: () => void;
+    slug?: string;
 };
 
-export default function ContentCard({ content, onClick }: Props) {
-    const handleLinkClick = (href: string) => {
-        window.open(href, "_blank");
-    };
-
+export default function ContentCard({ content, slug }: Props) {
     return (
-        <div
-            className="flex flex-col mx-4 py-4 border-b first:pt-0 last:pb-0 last:border-none
-            border-bgAccent w-full"
-        >
+        <div className="flex flex-col mx-4 py-4 first:pt-0 last:pb-0 w-full">
             {/* Information and Image */}
             <div className="flex flex-row justify-between max-h-64 lg:max-h-48 xl:max-h-36">
                 <div className="flex flex-col">
@@ -31,7 +24,7 @@ export default function ContentCard({ content, onClick }: Props) {
                     <h1 className="text-textPrimary font-semibold text-lg mb-1">
                         {content.title}
                     </h1>
-                    <p className="text-textBody overflow-hidden text-ellipsis">
+                    <p className="text-textBody overflow-hidden line-clamp-4">
                         {content.description}
                     </p>
                 </div>
@@ -52,13 +45,13 @@ export default function ContentCard({ content, onClick }: Props) {
             <div className="flex flex-row justify-end mt-1 gap-1">
                 {content.links &&
                     content.links.map(({ name, href }, idx) => (
-                        <Button key={idx} onClick={() => handleLinkClick(href)}>
+                        <Button key={idx} href={href} target="_blank">
                             <p className="inline-block align-middle">{name}</p>
                             <ExternalLinkOutline className="ml-1 inline-block w-4 align-middle" />
                         </Button>
                     ))}
                 {content.content && (
-                    <Button onClick={onClick}>
+                    <Button href={slug} target="_self">
                         <p className="inline-block align-middle">Read more</p>
                         <CornerUpRightOutline className="ml-1 inline-block w-4 align-middle" />
                     </Button>

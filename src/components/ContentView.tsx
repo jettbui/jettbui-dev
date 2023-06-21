@@ -17,17 +17,18 @@ export default function ContentView({ contentData }: Props) {
     const handleCategoryClick = (idx: number) => {
         setActiveCategory(idx);
     };
+    console.log(activeCategoryTitle);
 
-    const handleContentClick = (idx: number) => {
+    const getSlug = (idx: number) => {
         const content = activeCategoryContent[idx];
 
         // redirect in current window
         let categorySlug;
         switch (activeCategoryTitle) {
-            case "Experience":
+            case "Experiences":
                 categorySlug = "experiences";
                 break;
-            case "Project":
+            case "Projects":
                 categorySlug = "projects";
                 break;
             default:
@@ -36,7 +37,7 @@ export default function ContentView({ contentData }: Props) {
 
         if (!categorySlug || !content.slug) return;
 
-        window.open(`/${categorySlug}/${content.slug}`, "_self");
+        return `/${categorySlug}/${content.slug}`;
     };
 
     if (!contentData || contentData.length === 0) {
@@ -74,9 +75,7 @@ export default function ContentView({ contentData }: Props) {
                         <ContentCard
                             key={idx}
                             content={content}
-                            onClick={() => {
-                                handleContentClick(idx);
-                            }}
+                            slug={getSlug(idx)}
                         />
                     );
                 })}
