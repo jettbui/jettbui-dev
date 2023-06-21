@@ -9,7 +9,7 @@ const inter = Inter({
 
 // TODO: CMS for metadata
 export const metadata = {
-    title: "Personal Website / Jett Bui",
+    title: "Jett Bui / Personal Website",
     description:
         "Hi, I'm Jett! I'm an aspiring software engineer and a student at the University of California, San Diego. You can find points of contact and more about me here!",
 };
