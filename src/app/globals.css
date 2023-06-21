@@ -3,25 +3,47 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+    --background-primary: #fffffe;
+    --background-secondary: #fffffe;
+    --background-accent: #999999;
+
+    --scrollbar-thumb: #999999;
+    --scrollbar-track: #fffffe;
+
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-body: #333333;
+
+    --button-primary: #6366f1;
+    --button-primary-hover: #6366f1;
+    --button-primary-active: #3034ec;
+    --button-primary-bg-hover: #f9f9fe;
+    --button-secondary: #999999;
+    --button-secondary-hover: #666666;
+    --button-secondary-active: #333333;
+    --button-secondary-bg-hover: #eeeeee;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+    :root {
+        --background-primary: #0b1120;
+        --background-secondary: #0f172a;
+        --background-accent: #0ea5e9;
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+        --scrollbar-thumb: #94a3b8;
+        --scrollbar-track: #333333;
+
+        --text-primary: #ffffff;
+        --text-secondary: #94a3b8;
+        --text-body: #c8d3de;
+
+        --button-primary: #0ea5e9;
+        --button-primary-hover: #0ea5e9;
+        --button-primary-active: #0ea5e9;
+        --button-primary-bg-hover: #15213e;
+        --button-secondary: #94a3b8;
+        --button-secondary-hover: #0ea5e9;
+        --button-secondary-active: #0ea5e9;
+        --button-secondary-bg-hover: #15213e;
+    }
 }
