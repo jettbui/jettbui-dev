@@ -46,42 +46,42 @@ export const PortableTextComponents: Partial<PortableTextReactComponents> = {
     block: {
         h1: ({ children }) => {
             return (
-                <h1 className="text-xl lg:text-2xl xl:text-3xl font-bold text-textPrimary my-2">
+                <h1 className="text-xl lg:text-2xl xl:text-3xl font-bold text-textPrimary my-2 mt-4">
                     {children}
                 </h1>
             );
         },
         h2: ({ children }) => {
             return (
-                <h2 className="text-lg lg:text-xl xl:text-2xl font-bold text-textPrimary my-2">
+                <h2 className="text-lg lg:text-xl xl:text-2xl font-bold text-textPrimary my-2 mt-4">
                     {children}
                 </h2>
             );
         },
         h3: ({ children }) => {
             return (
-                <h3 className="text-md lg:text-lg xl:text-xl font-bold text-textPrimary my-2">
+                <h3 className="text-md lg:text-lg xl:text-xl font-bold text-textPrimary my-2 mt-4">
                     {children}
                 </h3>
             );
         },
         h4: ({ children }) => {
             return (
-                <h4 className="text-md lg:text-lg xl:text-xl font-bold text-textPrimary my-2">
+                <h4 className="text-md lg:text-lg xl:text-xl font-bold text-textPrimary my-2 mt-4">
                     {children}
                 </h4>
             );
         },
         h5: ({ children }) => {
             return (
-                <h5 className="text-md lg:text-lg xl:text-xl font-bold text-textPrimary my-2">
+                <h5 className="text-md lg:text-lg xl:text-xl font-bold text-textPrimary my-2 mt-4">
                     {children}
                 </h5>
             );
         },
         h6: ({ children }) => {
             return (
-                <h6 className="text-sm lg:text-md xl:text-lg font-bold text-textPrimary my-2">
+                <h6 className="text-sm lg:text-md xl:text-lg font-bold text-textPrimary my-2 mt-4">
                     {children}
                 </h6>
             );
