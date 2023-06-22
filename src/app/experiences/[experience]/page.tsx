@@ -18,7 +18,7 @@ export default async function ExperiencePage({ params }: Props) {
     const slug = params.experience;
     const content = await getExperience(slug);
 
-    if (!content) {
+    if (!content || !content.content) {
         return <NotFound />;
     }
 

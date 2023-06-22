@@ -18,7 +18,7 @@ export default async function ProjectPage({ params }: Props) {
     const slug = params.project;
     const content = await getProject(slug);
 
-    if (!content) {
+    if (!content || !content.content) {
         return <NotFound />;
     }
 

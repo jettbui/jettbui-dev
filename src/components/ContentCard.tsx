@@ -16,7 +16,7 @@ export default function ContentCard({ content, slug }: Props) {
     return (
         <div className="flex flex-col mx-4 py-4 first:pt-0 last:pb-0 w-full">
             {/* Information and Image */}
-            <div className="flex flex-row justify-between max-h-64 lg:max-h-48 xl:max-h-36">
+            <div className="flex flex-row justify-between max-h-64 lg:max-h-56 xl:max-h-48">
                 <div className="flex flex-col">
                     <h1 className="text-textSecondary font-semibold">
                         {content.subtitle}
