@@ -14,6 +14,8 @@ type Props = {
     };
 };
 
+// TODO: Metadata
+
 export default async function ExperiencePage({ params }: Props) {
     const slug = params.experience;
     const content = await getExperience(slug);

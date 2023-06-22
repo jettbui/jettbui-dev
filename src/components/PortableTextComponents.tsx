@@ -2,8 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { PortableTextReactComponents } from "@portabletext/react";
 
-// TODO: Typing
-
 export const PortableTextComponents: Partial<PortableTextReactComponents> = {
     types: {
         image: ({ value }) => {

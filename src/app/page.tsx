@@ -44,11 +44,7 @@ export default async function Home() {
     ];
 
     return (
-        <main
-            className="flex flex-col items-center justify-start min-h-screen overflow-y-scroll
-        scrollbar-thin scrollbar-thumb-[#999999] scrollbar-track-[#f1f1f1]
-        dark:scrollbar-thumb-[#94a3b8] dark:scrollbar-track-[#0b1120]"
-        >
+        <main className="flex flex-col items-center justify-start min-h-screen">
             {/* Header */}
             <div
                 className="flex flex-col-reverse lg:flex-row items-center lg:justify-start 
@@ -93,7 +89,7 @@ export default async function Home() {
                 </div>
             </div>
             {/* Content */}
-            <div className="w-full h-screen grow flex justify-center bg-bgSecondary">
+            <div className="w-full min-h-screen grow flex justify-center bg-bgSecondary">
                 <ContentView contentData={contentData} />
             </div>
         </main>
