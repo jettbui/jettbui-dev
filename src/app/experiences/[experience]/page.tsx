@@ -19,6 +19,7 @@ type Props = {
 export default async function ExperiencePage({ params }: Props) {
     const slug = params.experience;
     const content = await getExperience(slug);
+    const previousParams = "?category=0";
 
     if (!content || !content.content) {
         return <NotFound />;
@@ -32,7 +33,11 @@ export default async function ExperiencePage({ params }: Props) {
             <div className="flex flex-col w-full lg:w-[48rem] xl:w-[48rem]">
                 {/* Header */}
                 <div className="mb-2">
-                    <Button href={"/"} target="_self" noBackground>
+                    <Button
+                        href={`/${previousParams}`}
+                        target="_self"
+                        noBackground
+                    >
                         <ArrowBackOutline className="mr-1 inline-block w-4 align-middle" />
                         <p className="inline-block align-middle">Go back</p>
                     </Button>

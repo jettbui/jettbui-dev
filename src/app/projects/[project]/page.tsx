@@ -19,6 +19,7 @@ type Props = {
 export default async function ProjectPage({ params }: Props) {
     const slug = params.project;
     const content = await getProject(slug);
+    const previousParams = "?category=1";
 
     if (!content || !content.content) {
         return <NotFound />;
@@ -32,7 +33,11 @@ export default async function ProjectPage({ params }: Props) {
             <div className="flex flex-col w-full lg:w-[48rem] xl:w-[48rem]">
                 {/* Header */}
                 <div className="mb-2">
-                    <Button href={"/"} target="_self" noBackground>
+                    <Button
+                        href={`/${previousParams}`}
+                        target="_self"
+                        noBackground
+                    >
                         <ArrowBackOutline className="mr-1 inline-block w-4 align-middle" />
                         <p className="inline-block align-middle">Go back</p>
                     </Button>
