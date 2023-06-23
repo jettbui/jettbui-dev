@@ -8,6 +8,7 @@ I am actively looking to add more to it as I move along in my journey as a devel
 
 ## 🖥️ Tech Stack
 The website is built with [Next.js](https://nextjs.org/) and hosted on [Vercel](https://vercel.com/).
+Content is stored on a headless CMS through [Sanity.io](https://www.sanity.io/).
 
 ## 🪪 License
 
