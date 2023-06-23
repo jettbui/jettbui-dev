@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Button from "./Button";
+import Button from "@/components/Button";
 import CornerUpRightOutline from "@public/svg/corner-up-right-outline.svg";
 import ExternalLinkOutline from "@public/svg/external-link-outline.svg";
 import { Experience } from "@typesDir/Experience";

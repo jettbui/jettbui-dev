@@ -1,6 +1,6 @@
 import Image from "next/image";
-import IconButton from "@/components/IconButton";
-import ContentView from "@/components/ContentView";
+import IconButton from "./IconButton";
+import ContentView from "./ContentView";
 import profilePic from "@public/images/profile.jpg";
 import {
     getLatestHeaderContent,
