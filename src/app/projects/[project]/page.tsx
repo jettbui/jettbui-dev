@@ -88,3 +88,5 @@ export default async function ProjectPage({ params }: Props) {
         </main>
     );
 }
+
+export const revalidate = 60;

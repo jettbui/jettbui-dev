@@ -108,3 +108,5 @@ export default async function Home({ searchParams }: Props) {
         </main>
     );
 }
+
+export const revalidate = 60;
