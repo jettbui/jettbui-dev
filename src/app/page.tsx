@@ -1,6 +1,6 @@
 import Image from "next/image";
-import IconButton from "@/components/IconButton";
-import ContentView from "@/components/ContentView";
+import IconButton from "./IconButton";
+import ContentView from "./ContentView";
 import profilePic from "@public/images/profile.jpg";
 import {
     getLatestHeaderContent,
@@ -10,7 +10,13 @@ import {
 import { defaultSubheaderText, defaultLinkButtons } from "@/DefaultData";
 import { ContentData } from "@typesDir/Data";
 
-export default async function Home() {
+type Props = {
+    searchParams: {
+        [key: string]: string | string[] | undefined;
+    };
+};
+
+export default async function Home({ searchParams }: Props) {
     const [headerData, experiences, projects] = await Promise.all([
         getLatestHeaderContent(),
         getExperiences(),
@@ -42,6 +48,10 @@ export default async function Home() {
             }),
         },
     ];
+
+    const initialCategory = searchParams.category
+        ? parseInt(searchParams.category as string)
+        : undefined;
 
     return (
         <main className="flex flex-col items-center justify-start min-h-screen">
@@ -90,8 +100,13 @@ export default async function Home() {
             </div>
             {/* Content */}
             <div className="w-full min-h-screen grow flex justify-center bg-bgSecondary">
-                <ContentView contentData={contentData} />
+                <ContentView
+                    contentData={contentData}
+                    initialCategory={initialCategory}
+                />
             </div>
         </main>
     );
 }
+
+export const revalidate = 60;

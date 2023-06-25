@@ -6,10 +6,18 @@ import { ContentData } from "@typesDir/Data";
 
 type Props = {
     contentData: ContentData;
+    initialCategory?: number;
 };
 
-export default function ContentView({ contentData }: Props) {
-    const [activeCategory, setActiveCategory] = useState<number>(0);
+export default function ContentView({ contentData, initialCategory }: Props) {
+    // Validity check
+    if (!initialCategory || initialCategory > contentData.length - 1) {
+        initialCategory = undefined;
+    }
+
+    const [activeCategory, setActiveCategory] = useState<number>(
+        initialCategory || 0
+    );
 
     const { title: activeCategoryTitle, data: activeCategoryContent } =
         contentData[activeCategory];
