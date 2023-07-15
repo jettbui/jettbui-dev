@@ -1,5 +1,5 @@
-"use client";
-
+import { cache } from "react";
+import { Metadata, ResolvingMetadata } from "next";
 import { PortableText } from "@portabletext/react";
 import Button from "@/components/Button";
 import NotFound from "@/components/NotFound";
@@ -8,17 +8,40 @@ import ArrowBackOutline from "@public/svg/arrow-back-outline.svg";
 import ExternalLinkOutline from "@public/svg/external-link-outline.svg";
 import { PortableTextComponents } from "@/components/PortableTextComponents";
 
+const getContent = cache(async (slug: string) => {
+    const content = await getExperience(slug);
+    return content;
+});
+
 type Props = {
     params: {
         experience: string;
     };
 };
 
-// TODO: Metadata
+export async function generateMetadata(
+    { params }: Props,
+    parent?: ResolvingMetadata
+): Promise<Metadata> {
+    const slug = params.experience;
+    const content = await getContent(slug);
+
+    if (!content || !content.content) {
+        return {
+            title: "Not Found",
+            description: "Not Found",
+        };
+    }
+
+    return {
+        title: content.title + " / jettbui.dev",
+        description: content.subtitle,
+    };
+}
 
 export default async function ExperiencePage({ params }: Props) {
     const slug = params.experience;
-    const content = await getExperience(slug);
+    const content = await getContent(slug);
     const previousParams = "?category=0";
 
     if (!content || !content.content) {
