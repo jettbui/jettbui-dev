@@ -88,18 +88,18 @@ export default async function Home({ searchParams }: Props) {
                         <div className="absolute border border-bgAccent rounded-full opacity-30 h-[168px] w-[168px] lg:h-[216px] lg:w-[216px] xl:h-[280px] xl:w-[280px] animate-ping" />
                     </div>
                     <div className="w-full h-full aspect-square relative rounded-full object-fill overflow-hidden shrink-0">
-                        {/* TODO: sizes prop for optimized rendering */}
                         <Image
                             src={profilePic}
                             alt="Picture of me"
                             fill
                             placeholder="blur"
+                            sizes="(min-width: 1280px) 16rem, (min-width: 1024px) 12rem, 9rem"
                         />
                     </div>
                 </div>
             </div>
             {/* Content */}
-            <div className="w-full min-h-screen grow flex justify-center bg-bgSecondary">
+            <div className="w-full min-h-screen grow flex justify-center bg-bgSecondary z-10">
                 <ContentView
                     contentData={contentData}
                     initialCategory={initialCategory}

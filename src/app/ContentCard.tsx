@@ -31,12 +31,12 @@ export default function ContentCard({ content, slug }: Props) {
                 {/* Image */}
                 {content.thumbnail && (
                     <div className="relative aspect-square h-16 lg:h-20 xl:h-24 ml-4">
-                        {/* TODO: sizes prop for optimized rendering */}
                         <Image
                             src={content.thumbnail}
                             alt={"Thumbnail"}
                             fill
                             style={{ objectFit: "cover" }}
+                            sizes="(min-width: 1280px) 6rem, (min-width: 1024px) 5rem, 4rem"
                         />
                     </div>
                 )}
