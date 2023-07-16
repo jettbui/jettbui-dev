@@ -1,8 +1,8 @@
 import { cache } from "react";
 import { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 import Button from "@/components/Button";
-import NotFound from "@/components/NotFound";
 import { getExperience } from "@sanity/sanity-utils";
 import ArrowBackOutline from "@public/svg/arrow-back-outline.svg";
 import ExternalLinkOutline from "@public/svg/external-link-outline.svg";
@@ -21,16 +21,13 @@ type Props = {
 
 export async function generateMetadata(
     { params }: Props,
-    parent?: ResolvingMetadata
+    parent: ResolvingMetadata
 ): Promise<Metadata> {
     const slug = params.experience;
     const content = await getContent(slug);
 
     if (!content || !content.content) {
-        return {
-            title: "Not Found",
-            description: "Not Found",
-        };
+        notFound();
     }
 
     return {
@@ -45,7 +42,7 @@ export default async function ExperiencePage({ params }: Props) {
     const previousParams = "?category=0";
 
     if (!content || !content.content) {
-        return <NotFound />;
+        notFound();
     }
 
     return (
