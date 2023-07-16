@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -8,8 +9,8 @@ const inter = Inter({
 });
 
 // TODO: CMS for metadata
-export const metadata = {
-    title: "Jett Bui / Personal Website",
+export const metadata: Metadata = {
+    title: "Jett Bui / jettbui.dev",
     description:
         "Hi, I'm Jett! I'm an aspiring software engineer and a student at the University of California, San Diego. You can find points of contact and more about me here!",
 };

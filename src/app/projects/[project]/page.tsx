@@ -1,12 +1,17 @@
-"use client";
-
+import { cache } from "react";
+import { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 import Button from "@/components/Button";
-import NotFound from "@/components/NotFound";
 import { getProject } from "@sanity/sanity-utils";
 import ArrowBackOutline from "@public/svg/arrow-back-outline.svg";
 import ExternalLinkOutline from "@public/svg/external-link-outline.svg";
 import { PortableTextComponents } from "@/components/PortableTextComponents";
+
+const getContent = cache(async (slug: string) => {
+    const content = await getProject(slug);
+    return content;
+});
 
 type Props = {
     params: {
@@ -14,7 +19,22 @@ type Props = {
     };
 };
 
-// TODO: Metadata
+export async function generateMetadata(
+    { params }: Props,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    const slug = params.project;
+    const content = await getContent(slug);
+
+    if (!content || !content.content) {
+        notFound();
+    }
+
+    return {
+        title: content.title + " / jettbui.dev",
+        description: content.subtitle,
+    };
+}
 
 export default async function ProjectPage({ params }: Props) {
     const slug = params.project;
@@ -22,7 +42,7 @@ export default async function ProjectPage({ params }: Props) {
     const previousParams = "?category=1";
 
     if (!content || !content.content) {
-        return <NotFound />;
+        notFound();
     }
 
     return (
