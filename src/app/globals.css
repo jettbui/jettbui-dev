@@ -1,6 +1,24 @@
 @import "tailwindcss";
 @config "../../tailwind.config.js";
 
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+}
+
 :root {
     --background-primary: #fffffe;
     --background-secondary: #fffffe;

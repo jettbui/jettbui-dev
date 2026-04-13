@@ -16,14 +16,9 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-    // FIXME: Use global color for scrollbar
     return (
         <html lang="en">
-            <body
-                className={`${inter.variable} font-sans bg-bgPrimary overflow-y-scroll
-                            scrollbar-thin  scrollbar-track-[#f1f1f1]
-                          dark:scrollbar-thumb-[#94a3b8] dark:scrollbar-track-[#0b1120]`}
-            >
+            <body className={`${inter.variable} font-sans bg-bgPrimary overflow-y-scroll`}>
                 {children}
             </body>
         </html>
