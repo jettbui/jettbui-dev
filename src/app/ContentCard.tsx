@@ -18,12 +18,8 @@ export default function ContentCard({ content, slug }: Props) {
             {/* Information and Image */}
             <div className="flex flex-row justify-between max-h-64 lg:max-h-56 xl:max-h-48">
                 <div className="flex flex-col">
-                    <h1 className="text-textSecondary font-semibold">
-                        {content.subtitle}
-                    </h1>
-                    <h1 className="text-textPrimary font-semibold text-lg mb-1">
-                        {content.title}
-                    </h1>
+                    <h1 className="text-textSecondary font-semibold">{content.subtitle}</h1>
+                    <h1 className="text-textPrimary font-semibold text-lg mb-1">{content.title}</h1>
                     <p className="text-textBody overflow-hidden line-clamp-4">
                         {content.description}
                     </p>

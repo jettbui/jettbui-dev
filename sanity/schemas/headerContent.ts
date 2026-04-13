@@ -76,9 +76,7 @@ export default defineType({
         prepare({ title, subtitle }) {
             return {
                 title,
-                subtitle: `Last Updated: ${new Date(
-                    subtitle
-                ).toLocaleString()}`,
+                subtitle: `Last Updated: ${new Date(subtitle).toLocaleString()}`,
             };
         },
     },

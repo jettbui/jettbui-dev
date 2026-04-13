@@ -14,16 +14,16 @@ const getContent = cache(async (slug: string) => {
 });
 
 type Props = {
-    params: {
+    params: Promise<{
         experience: string;
-    };
+    }>;
 };
 
 export async function generateMetadata(
     { params }: Props,
-    parent: ResolvingMetadata
+    parent: ResolvingMetadata,
 ): Promise<Metadata> {
-    const slug = params.experience;
+    const { experience: slug } = await params;
     const content = await getContent(slug);
 
     if (!content || !content.content) {
@@ -37,7 +37,7 @@ export async function generateMetadata(
 }
 
 export default async function ExperiencePage({ params }: Props) {
-    const slug = params.experience;
+    const { experience: slug } = await params;
     const content = await getContent(slug);
     const previousParams = "?category=0";
 
@@ -53,11 +53,7 @@ export default async function ExperiencePage({ params }: Props) {
             <div className="flex flex-col w-full lg:w-[48rem] xl:w-[48rem]">
                 {/* Header */}
                 <div className="mb-2">
-                    <Button
-                        href={`/${previousParams}`}
-                        target="_self"
-                        noBackground
-                    >
+                    <Button href={`/${previousParams}`} target="_self" noBackground>
                         <ArrowBackOutline className="mr-1 inline-block w-4 align-middle" />
                         <p className="inline-block align-middle">Go back</p>
                     </Button>
@@ -81,25 +77,15 @@ export default async function ExperiencePage({ params }: Props) {
                 {/* Content */}
                 {content.content && (
                     <div className="pt-2 pb-4 text-textBody">
-                        <PortableText
-                            value={content.content}
-                            components={PortableTextComponents}
-                        />
+                        <PortableText value={content.content} components={PortableTextComponents} />
                     </div>
                 )}
                 {/* Links */}
                 <div className="flex flex-rol justify-start gap-1 mt-3">
                     {content.links &&
                         content.links.map(({ name, href }, idx) => (
-                            <Button
-                                key={idx}
-                                href={href}
-                                target="_blank"
-                                noBackground
-                            >
-                                <p className="inline-block align-middle">
-                                    {name}
-                                </p>
+                            <Button key={idx} href={href} target="_blank" noBackground>
+                                <p className="inline-block align-middle">{name}</p>
                                 <ExternalLinkOutline className="ml-1 inline-block w-4 align-middle" />
                             </Button>
                         ))}

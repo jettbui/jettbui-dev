@@ -8,15 +8,8 @@ type Props = {
     noBackground?: boolean;
 };
 
-export default function Button({
-    children,
-    href,
-    target,
-    noBackground,
-}: Props) {
-    const background = noBackground
-        ? ""
-        : "px-3 py-2 hover:bg-buttonPrimaryBgHover";
+export default function Button({ children, href, target, noBackground }: Props) {
+    const background = noBackground ? "" : "px-3 py-2 hover:bg-buttonPrimaryBgHover";
 
     return (
         <Link

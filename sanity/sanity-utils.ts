@@ -22,10 +22,7 @@ export async function getLatestHeaderContent(): Promise<HeaderData> {
     return client.fetch(query).then((data: HeaderData[]) => {
         // Sort the data by createdAt
         data.sort((a, b) => {
-            return (
-                new Date(b.createdAt).getTime() -
-                new Date(a.createdAt).getTime()
-            );
+            return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
         });
 
         // Return the first element

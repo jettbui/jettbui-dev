@@ -26,16 +26,10 @@ export const PortableTextComponents: Partial<PortableTextReactComponents> = {
     },
     marks: {
         link: ({ value, children }) => {
-            const target = (value?.href || "").startsWith("http")
-                ? "_blank"
-                : undefined;
+            const target = (value?.href || "").startsWith("http") ? "_blank" : undefined;
 
             return (
-                <Link
-                    className="text-textPrimary underline"
-                    href={value.href}
-                    target={target}
-                >
+                <Link className="text-textPrimary underline" href={value.href} target={target}>
                     {children}
                 </Link>
             );

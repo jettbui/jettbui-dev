@@ -5,12 +5,13 @@
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 
 ## 🌟 Motivation
+
 This website has been one of my hobby projects as well as a tool for others to connect with me. You can find it at [jettbui.dev](https://jettbui.dev).
 
 I am actively looking to add more to it as I move along in my journey as a developer. If you have any feedback, please feel free to reach out to me!
 
-
 ## 🖥️ Tech Stack
+
 The website is built with [Next.js](https://nextjs.org/) and hosted on [Vercel](https://vercel.com/).
 Content is stored on a headless CMS through [Sanity.io](https://www.sanity.io/).
 

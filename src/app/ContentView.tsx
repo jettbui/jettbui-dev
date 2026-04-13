@@ -15,12 +15,9 @@ export default function ContentView({ contentData, initialCategory }: Props) {
         initialCategory = undefined;
     }
 
-    const [activeCategory, setActiveCategory] = useState<number>(
-        initialCategory || 0
-    );
+    const [activeCategory, setActiveCategory] = useState<number>(initialCategory || 0);
 
-    const { title: activeCategoryTitle, data: activeCategoryContent } =
-        contentData[activeCategory];
+    const { title: activeCategoryTitle, data: activeCategoryContent } = contentData[activeCategory];
 
     const handleCategoryClick = (idx: number) => {
         setActiveCategory(idx);
@@ -78,13 +75,7 @@ export default function ContentView({ contentData, initialCategory }: Props) {
             </div>
             <div className="flex flex-col items-center w-full">
                 {activeCategoryContent.map((content, idx) => {
-                    return (
-                        <ContentCard
-                            key={idx}
-                            content={content}
-                            slug={getSlug(idx)}
-                        />
-                    );
+                    return <ContentCard key={idx} content={content} slug={getSlug(idx)} />;
                 })}
             </div>
         </div>

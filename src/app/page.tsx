@@ -2,18 +2,14 @@ import Image from "next/image";
 import IconButton from "./IconButton";
 import ContentView from "./ContentView";
 import profilePic from "@public/images/profile.jpg";
-import {
-    getLatestHeaderContent,
-    getExperiences,
-    getProjects,
-} from "@sanity/sanity-utils";
+import { getLatestHeaderContent, getExperiences, getProjects } from "@sanity/sanity-utils";
 import { defaultSubheaderText, defaultLinkButtons } from "@/DefaultData";
 import { ContentData } from "@typesDir/Data";
 
 type Props = {
-    searchParams: {
+    searchParams: Promise<{
         [key: string]: string | string[] | undefined;
-    };
+    }>;
 };
 
 export default async function Home({ searchParams }: Props) {
@@ -27,11 +23,7 @@ export default async function Home({ searchParams }: Props) {
     const linkButtons = headerData?.linkButtons || defaultLinkButtons;
 
     const resumeButton = headerData?.resumeFile && (
-        <IconButton
-            name="Resume"
-            href={headerData.resumeFile}
-            icon="file-outline"
-        />
+        <IconButton name="Resume" href={headerData.resumeFile} icon="file-outline" />
     );
 
     const contentData: ContentData = [
@@ -49,8 +41,9 @@ export default async function Home({ searchParams }: Props) {
         },
     ];
 
-    const initialCategory = searchParams.category
-        ? parseInt(searchParams.category as string)
+    const resolvedSearchParams = await searchParams;
+    const initialCategory = resolvedSearchParams.category
+        ? parseInt(resolvedSearchParams.category as string)
         : undefined;
 
     return (
@@ -71,12 +64,7 @@ export default async function Home({ searchParams }: Props) {
                     <div className="flex -ml-2">
                         {resumeButton}
                         {linkButtons.map(({ name, href, icon }, idx) => (
-                            <IconButton
-                                key={idx}
-                                name={name}
-                                href={href}
-                                icon={icon}
-                            />
+                            <IconButton key={idx} name={name} href={href} icon={icon} />
                         ))}
                     </div>
                 </div>
@@ -100,10 +88,7 @@ export default async function Home({ searchParams }: Props) {
             </div>
             {/* Content */}
             <div className="w-full min-h-screen grow flex justify-center bg-bgSecondary z-10">
-                <ContentView
-                    contentData={contentData}
-                    initialCategory={initialCategory}
-                />
+                <ContentView contentData={contentData} initialCategory={initialCategory} />
             </div>
         </main>
     );
